@@ -1,19 +1,13 @@
 import "./App.css";
 import { useState } from "react";
 import ChildeComp from "./components/ChildeComp";
+import { list } from "./constants/list";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [list, setList] = useState([1]);
 
   const incrementCount = () => {
     setCount((prev) => prev + 1);
-  };
-
-  const decrementCount = () => {
-    setCount((prev) => {
-      return prev === 0 ? 0 : prev - 1;
-    });
   };
 
   console.log("parent component rendered");
@@ -26,12 +20,8 @@ function App() {
           </button>
         </div>
         <div>
-          <button className="btn" onClick={decrementCount}>
-            -
-          </button>
           <p>Count: {count}</p>
         </div>
-
         <ChildeComp list={list} />
       </div>
     </div>
@@ -63,3 +53,10 @@ export default App;
 // }, []);
 
 //  <ChildeComp list={list} onHandleUpdate={onHandleUpdate} />
+// const [list, setList] = useState([1]);
+
+// const decrementCount = () => {
+//   setCount((prev) => {
+//     return prev === 0 ? 0 : prev - 1;
+//   });
+// };
