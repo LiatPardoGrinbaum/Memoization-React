@@ -1,10 +1,10 @@
 import "./App.css";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import ChildeComp from "./components/ChildeComp";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [list, setList] = useState([1, 2, 3, 4]);
+  const [list, setList] = useState([1]);
 
   const incrementCount = () => {
     setCount((prev) => prev + 1);
@@ -12,35 +12,27 @@ function App() {
 
   const decrementCount = () => {
     setCount((prev) => {
-      if (prev === 0) {
-        return 0;
-      } else {
-        return prev - 1;
-      }
+      return prev === 0 ? 0 : prev - 1;
     });
   };
-
-  const onHandleUpdate = useCallback(() => {
-    //update list
-    setList((prev) => [...prev, Math.floor(Math.random() * 5)]);
-    console.log("hello");
-  }, []);
-
-  // const user = { name: "John", age: "28" };
 
   console.log("parent component rendered");
   return (
     <div className="App">
       <div className="box">
         <div>
-          <button onClick={incrementCount}>+</button>
+          <button className="btn" onClick={incrementCount}>
+            +
+          </button>
         </div>
         <div>
-          <button onClick={decrementCount}>-</button>
-          <p>{count}</p>
+          <button className="btn" onClick={decrementCount}>
+            -
+          </button>
+          <p>Count: {count}</p>
         </div>
 
-        <ChildeComp list={list} onHandleUpdate={onHandleUpdate} />
+        <ChildeComp list={list} />
       </div>
     </div>
   );
@@ -61,3 +53,13 @@ export default App;
 // const addAnimalInput = useCallback(() => {
 //   setNewList([animal, ...listNums]);
 // }, [animal]);
+
+// const user = { name: "John", age: "28" };
+
+//  const onHandleUpdate = useCallback(() => {
+//   //update list
+//   setList((prev) => [...prev, Math.floor(Math.random() * 5)]);
+//   console.log("hello");
+// }, []);
+
+//  <ChildeComp list={list} onHandleUpdate={onHandleUpdate} />

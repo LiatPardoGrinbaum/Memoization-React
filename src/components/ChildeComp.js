@@ -1,16 +1,18 @@
 import React, { memo } from "react";
 
-const ChildeComp = ({ list, user, onHandleUpdate }) => {
+const ChildeComp = ({ list, onHandleUpdate }) => {
   console.log("child component rendered");
   // console.log(list);
   return (
     <div>
-      <button onClick={onHandleUpdate}>Add number to List</button>
-      {list.map((num, idx) => {
-        return <span key={idx}>{`${num} `}</span>;
-      })}
-
-      {/*  <div>{user.name}</div> */}
+      <button className="btn btnAdd" onClick={onHandleUpdate}>
+        Add number
+      </button>
+      <div>
+        {list.map((num, idx) => {
+          return <span key={idx}>{`${num} `}</span>;
+        })}
+      </div>
     </div>
   );
 };
@@ -22,3 +24,5 @@ const ChildeComp = ({ list, user, onHandleUpdate }) => {
 
 // export default memo(ChildeComp);
 export default memo(ChildeComp);
+
+// <div>{user.name}</div>
