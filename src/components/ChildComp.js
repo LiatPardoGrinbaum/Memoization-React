@@ -13,4 +13,9 @@ const ChildComp = ({ list, user }) => {
     </div>
   );
 };
-export default memo(ChildComp);
+// export default memo(ChildComp);
+export default memo(ChildComp, areEqual);
+
+function areEqual(prevProps, nextProps) {
+  return prevProps.user.name === nextProps.user.name && prevProps.list === nextProps.list;
+}
