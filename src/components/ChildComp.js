@@ -1,12 +1,10 @@
 import React, { memo } from "react";
-
-const ChildeComp = ({ list }) => {
+const ChildComp = ({ list, user }) => {
   console.log("child component rendered");
 
   return (
     <div>
-      <p>Hello</p>
-      {/* <div>{user.name}</div> */}
+      <p>Hello {user.name}</p>
       <div>
         {list.map((num, idx) => {
           return <span key={idx}>{`${num} `}</span>;
@@ -15,13 +13,15 @@ const ChildeComp = ({ list }) => {
     </div>
   );
 };
+export default memo(ChildComp);
+
+// export default memo(ChildComp, areEqual);
 
 // function areEqual(prevProps, nextProps) {
-//   return prevProps.user.name === nextProps.user.name;
+//   return prevProps.user.name === nextProps.user.name && prevProps.list === nextProps.list;
 // }
 
-// export default memo(ChildeComp, areEqual);
-export default memo(ChildeComp);
+//  {/* <div>{user.name}</div> */}
 
 /* 
 
