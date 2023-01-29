@@ -1,10 +1,55 @@
 import "./App.css";
 import { useState } from "react";
 import ChildeComp from "./components/ChildeComp";
+import { numbers } from "./constants/numbers";
+
+function App() {
+  const [count, setCount] = useState(0);
+  const [list, setList] = useState(numbers);
+  // const user = { name: "John", age: "28" };
+
+  const incrementCount = () => {
+    setCount((prev) => prev + 1);
+  };
+
+  const onHandleUpdate = () => {
+    //update list
+    setList((prev) => [...prev, Math.floor(Math.random() * 5)]);
+  };
+
+  console.log("parent component rendered");
+  return (
+    <div className="App">
+      <div className="box">
+        <div>
+          <button className="btn" onClick={incrementCount}>
+            +
+          </button>
+        </div>
+        <div>
+          <p>Count: {count}</p>
+        </div>
+        <button onClick={onHandleUpdate} className="btn btnAdd">
+          Add Number
+        </button>
+        <ChildeComp list={list} />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+/* 
+import "./App.css";
+import { useState } from "react";
+import ChildeComp from "./components/ChildeComp";
 import { list } from "./constants/list";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [signedIn, setSignedIn] = useState(false);
+  const handleClick = () => setSignedIn((prev) => !prev);
 
   const incrementCount = () => {
     setCount((prev) => prev + 1);
@@ -22,13 +67,18 @@ function App() {
         <div>
           <p>Count: {count}</p>
         </div>
-        <ChildeComp list={list} />
+
+        <ChildeComp list={list} signedIn={signedIn} />
+        <button onClick={handleClick}>{signedIn ? "Sign Out" : "Sign In"}</button>
       </div>
     </div>
   );
 }
 
 export default App;
+
+
+*/
 
 // const [animal, setAnimal] = useState("unknown");
 // const [newList, setNewList] = useState(listNums);
